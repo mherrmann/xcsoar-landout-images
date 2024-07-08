@@ -59,4 +59,6 @@ This produces the `zentral_und_ostalpen_de.txt` file and the `images/` directory
 
 ## Contributing
 
+Please donate to https://landout.streckenflug.at/. You can find simple instructions on their website.
+
 Contributions are welcome. Please follow my [PR guidelines](https://gist.github.com/mherrmann/5ce21814789152c17abd91c0b3eaadca).
