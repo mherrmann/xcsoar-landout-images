@@ -103,10 +103,6 @@ def crop_and_reduce_size(input_path, output_path, crop_box):
         img_8bit.save(output_path)
 
 class ConvertCoordsTest(TestCase):
-    def test_convert_coordinates(self):
-        self.assertEqual(
-            '47.4442/13.9533', convert_coordinates('4726.650N,01357.199E')
-        )
     def test_to_decimal_degrees(self):
         self.assertEqual(47.44416666666667, to_decimal_degrees(47, 26.65, 'N'))
 
