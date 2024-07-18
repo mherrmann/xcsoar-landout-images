@@ -6,7 +6,8 @@ from helium import start_chrome, kill_browser, go_to, get_driver, find_all, S, \
 from os import makedirs
 from os.path import join, dirname, splitext, exists, relpath, basename
 from PIL import Image
-from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import StaleElementReferenceException, \
+    TimeoutException
 from selenium.webdriver.chrome.options import Options
 from tempfile import NamedTemporaryFile
 from time import sleep
