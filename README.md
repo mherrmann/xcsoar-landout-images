@@ -8,7 +8,7 @@ Below is what it looks like in XCSoar. When you click on a field and select _Det
 
 ## Installation in XCSoar
 
-1. Download the CUP file for the region you are interested in from https://landout.streckenflug.at//index.php?inc=cup. This for example gives you the file `zentral_und_ostalpen_de.cup`.
+1. Download the CUP file for the region you are interested in from https://landout.streckenflug.at//index.php?inc=cup (English) or https://landewiesen.streckenflug.at//index.php?inc=cup (German). This for example gives you the file `zentral_und_ostalpen_de.cup`.
 
 2. Download the ZIP file from the GitHub Releases page of this project. This should contain a `.txt` file with the same name as the CUP file. For example, `zentral_und_ostalpen_de.txt`. It also contains a folder `images` with a subfolder with the same name. For example, `images/zentral_und_ostalpen_de`.
 
