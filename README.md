@@ -4,7 +4,7 @@
 
 Below is what it looks like in XCSoar. When you click on a field and select _Details_, then click on the left arrow button at the bottom of the screen, you see the following:
 
-![Waypoint image in XCsoar](Screenshot.jpg?raw=true "Waypoint image in XCSoar")
+![Waypoint image in XCsoar](screenshots/field-picture.jpg?raw=true "Waypoint image in XCSoar")
 
 ## Installation in XCSoar
 
@@ -59,7 +59,11 @@ This produces the `zentral_und_ostalpen_de.txt` file and the `images/` directory
 
 ### A big caveat
 
-Sometimes, some images do not load properly. (They remain grey, or show some grey squares.) You must check that the images in the `images/` folder do not exhibit this problem. (It is easy to do when you look at the thumbnails.) If an image is broken in this way, delete it and run the script again. The script will then only re-download this one image, and not the others.
+When you run the script, some images sometimes do not load properly. They remain grey, or show some grey squares:
+
+![Landout field with grey squares](screenshots/grey-squares.jpg?raw=true "Landout field with grey squares")
+
+You must check that the images in the `images/` folder do not exhibit this problem. (It is easy to do when you look at the thumbnails.) If an image is broken in this way, delete it and run the script again. The script will then only re-download this one image, and not the others.
 
 ## Contributing
 
