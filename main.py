@@ -8,6 +8,7 @@ from os.path import join, dirname, splitext, exists, relpath, basename
 from PIL import Image
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.chrome.options import Options
+from tempfile import NamedTemporaryFile
 from time import sleep
 from tqdm import tqdm
 from unittest import TestCase
@@ -36,7 +37,7 @@ def main():
                 for row in tqdm(rows[1:]):
                     get = lambda h: row[header.index(h)]
                     url = get_field_url(get('lat'), get('lon'))
-                    image_name = get('code') + '.png'
+                    image_name = get('code') + '.jpg'
                     image_path = join(images_dir, image_name)
                     save_screenshot(url, image_path, force)
                     image_relpath = relpath(image_path, base_dir)
@@ -137,26 +138,23 @@ def save_screenshot(url, path, force):
     if exists(path) and not force:
         return
     go_to(url)
-    sleep(5)
-    wait_until(lambda: not has_loading_tiles())
-    get_driver().save_screenshot(path)
-    crop_and_reduce_size(path, path, (100, 200, 800, 1300))
+    try:
+        wait_until(has_loading_tiles, timeout_secs=2, interval_secs=.01)
+    except TimeoutException:
+        pass
+    else:
+        wait_until(lambda: not has_loading_tiles(), interval_secs=2)
+    with NamedTemporaryFile(suffix='.png') as tmp_file:
+        get_driver().save_screenshot(tmp_file.name)
+        with Image.open(tmp_file.name) as img:
+            img.crop((100, 200, 800, 1300)).save(path)
 
 def has_loading_tiles():
     try:
-        for e in find_all(S('.leaflet-tile')):
-            if float(e.web_element.value_of_css_property('opacity')) < 1:
-                return True
+        return S('.leaflet-tile[style*="opacity: 0."]').exists()
     except StaleElementReferenceException:
         return True
     return False
-
-def crop_and_reduce_size(input_path, output_path, crop_box):
-    with Image.open(input_path) as img:
-        img = img.crop(crop_box)
-        # Convert to 8 bit to reduce size:
-        img_8bit = img.convert('P', palette=Image.ADAPTIVE, colors=256)
-        img_8bit.save(output_path)
 
 class ConvertCoordsTest(TestCase):
     def test_to_decimal_degrees(self):
