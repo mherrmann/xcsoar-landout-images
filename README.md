@@ -57,6 +57,10 @@ python3 main.py /path/to/zentral_und_ostalpen_de.cup
 
 This produces the `zentral_und_ostalpen_de.txt` file and the `images/` directory next to the `.cup` file.
 
+### A big caveat
+
+Sometimes, some images do not load properly. (They remain grey, or show some grey squares.) You must check that the images in the `images/` folder do not exhibit this problem. (It is easy to do when you look at the thumbnails.) If an image is broken in this way, delete it and run the script again. The script will then only re-download this one image, and not the others.
+
 ## Contributing
 
 Please donate to https://landout.streckenflug.at/. You can find simple instructions on their website.
